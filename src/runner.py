@@ -1,5 +1,5 @@
-from minimax import play
-from minimaxab import play_ab
+from decision_rules.minimax import play
+from decision_rules.minimax_alpha_beta_prunning import play_ab
 
 
 def main():
