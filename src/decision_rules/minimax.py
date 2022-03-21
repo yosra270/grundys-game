@@ -1,13 +1,12 @@
 from dotenv import load_dotenv
-from os import environ, path
+from os import environ
 
 from game_rules.game_rules import Game, game_configuration
 from game_rules.helpers import prompt_action, prompt_who_won
 
 
 # Find .env file
-basedir = path.abspath(path.dirname(__file__))
-load_dotenv(path.join(basedir, '.env'))
+load_dotenv()
 
 MAX = int(environ.get('MAX')) # Player is the user.
 MIN = int(environ.get('MIN')) # Player is the computer.

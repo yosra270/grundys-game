@@ -1,4 +1,4 @@
-FROM python:3.8-slim
+FROM python:3.10
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -8,7 +8,8 @@ ENV PYTHONUNBUFFERED=1
 
 # Install pip requirements
 COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
+COPY Makefile .
+RUN make setup
 
 WORKDIR /app
 COPY . /app
@@ -18,4 +19,4 @@ RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /
 USER appuser
 
 # During debugging, this entry point will be overridden.
-CMD ["python", "src\runner.py"]
+CMD ["make", "run"]
